@@ -11,7 +11,7 @@ import tempfile
 
 from release import ROOT, archive_members, metadata, require, run, verify
 
-REPO = 'Brendan-Lim/ContextLens'
+REPO = 'bstack-tools/ContextLens'
 TRUST = 'unnotarized-adhoc-preview'
 
 

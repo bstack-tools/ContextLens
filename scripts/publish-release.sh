@@ -32,6 +32,6 @@ Homebrew installation becomes available after the tap update is validated.
 EOF
 # A draft ensures assets arrive before visibility. Never use --clobber or --force.
 # gh creates the new tag at this exact source commit; no existing tag is moved.
-gh release create "v$version" --repo Brendan-Lim/ContextLens --target "$(git rev-parse HEAD)" --draft --title "ContextLens $version" --notes-file "$notes" \
+gh release create "v$version" --repo bstack-tools/ContextLens --target "$(git rev-parse HEAD)" --draft --title "ContextLens $version" --notes-file "$notes" \
     "$asset_dir/$asset" "$asset_dir/$asset.sha256" "$asset_dir/$asset.json"
-gh release edit "v$version" --repo Brendan-Lim/ContextLens --draft=false --latest
+gh release edit "v$version" --repo bstack-tools/ContextLens --draft=false --latest
