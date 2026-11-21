@@ -1,10 +1,10 @@
 # Official unnotarized release preparation
 
-The published download is [v0.3.0-preview.1](https://github.com/Brendan-Lim/ContextLens/releases/tag/v0.3.0-preview.1). v0.3.1/build 6 is an **unpublished candidate**, with ad-hoc signatures, no Developer ID and no Apple notarization. No installable stable Homebrew cask exists. The separate [Developer ID workflow](releasing.md) keeps its signing, notarization and Gatekeeper requirements.
+The published download is [v0.3.0-preview.1](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1). v0.3.1/build 6 is an **unpublished candidate**, with ad-hoc signatures, no Developer ID and no Apple notarization. No installable stable Homebrew cask exists. The separate [Developer ID workflow](releasing.md) keeps its signing, notarization and Gatekeeper requirements.
 
 ## Candidate baseline
 
-[Prepare-only run 42601149595](https://github.com/Brendan-Lim/ContextLens/actions/runs/42601149595) prepared the integrated Retina source below; its promotion job was skipped. Independent package verification and exact-byte native engineering checks passed all 14 engineering cases, including real Finder Light/Dark, drag/install/eject/launch, Low/High capture, Review/Mark Up, Hand Off and lifecycle/recovery. The seven owner-approved genuine Retina screenshots are integrated in the README; [the kit](screenshot-kit/README.md) describes their provenance.
+[Prepare-only run 42601149595](https://github.com/bstack-tools/ContextLens/actions/runs/42601149595) prepared the integrated Retina source below; its promotion job was skipped. Independent package verification and exact-byte native engineering checks passed all 14 engineering cases, including real Finder Light/Dark, drag/install/eject/launch, Low/High capture, Review/Mark Up, Hand Off and lifecycle/recovery. The seven owner-approved genuine Retina screenshots are integrated in the README; [the kit](screenshot-kit/README.md) describes their provenance.
 
 | Identity | Value |
 |---|---|
@@ -27,7 +27,7 @@ Five human security cases remain pending: genuine quarantined first launch, user
 3. Download that exact artifact into a fresh directory and verify it on an independent Mac:
 
    ```sh
-   gh run download RUN_ID --repo Brendan-Lim/ContextLens --name official-candidate-0.3.1 --dir CANDIDATE
+   gh run download RUN_ID --repo bstack-tools/ContextLens --name official-candidate-0.3.1 --dir CANDIDATE
    (cd CANDIDATE && shasum -a 256 -c SHA256SUMS)
    .build/dmg-python/bin/python scripts/unnotarized-release.py verify-assets CANDIDATE
    ```

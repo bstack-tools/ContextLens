@@ -2,9 +2,9 @@
 
 ## Binary downloads and Homebrew
 
-The current download is the preview [`v0.3.0-preview.1`](https://github.com/Brendan-Lim/ContextLens/releases/tag/v0.3.0-preview.1) (ZIP), also installable with `brew install --cask Brendan-Lim/tap/contextlens-preview`. Both are ad-hoc signed and not notarized by Apple. The stable DMG and the `contextlens` cask appear only after v0.3.1 passes [interactive acceptance](release-acceptance/README.md) and is published; until then, any stable cask template is not an installable package. [Homebrew channels](homebrew.md).
+The current download is the preview [`v0.3.0-preview.1`](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1) (ZIP), also installable with `brew install --cask Brendan-Lim/tap/contextlens-preview`. Both are ad-hoc signed and not notarized by Apple. The stable DMG and the `contextlens` cask appear only after v0.3.1 passes [interactive acceptance](release-acceptance/README.md) and is published; until then, any stable cask template is not an installable package. [Homebrew channels](homebrew.md).
 
-ContextLens is built for macOS 14 Sonoma and later on Apple Silicon. Automated checks run on macOS 15 and macOS 26; macOS 14 itself has not been tested at runtime yet, so please [report](https://github.com/Brendan-Lim/ContextLens/issues) anything that breaks there.
+ContextLens is built for macOS 14 Sonoma and later on Apple Silicon. Automated checks run on macOS 15 and macOS 26; macOS 14 itself has not been tested at runtime yet, so please [report](https://github.com/bstack-tools/ContextLens/issues) anything that breaks there.
 
 If a future install conflicts with an existing `ContextLens.app` or CLI, preserve your current app first and inspect `brew list --cask contextlens` and `command -v contextlens-cli`. Do not use `--force` to overwrite a development copy. Normal uninstall must not delete local sessions or exports.
 
@@ -44,7 +44,7 @@ Reconnect the installed app manually:
 
 The expected result is verified access and a working window capture; the Settings switch alone is not proof. Other API errors can have different causes.
 
-If access still fails, confirm the running app's path. Recent builds show **Running copy**, **Copy and signing details**, and **Show This Copy in Finder** beside the error. Note the app version/build, macOS version and exact error for a [bug report](https://github.com/Brendan-Lim/ContextLens/issues), keeping private logs and screen content local. See [permission diagnostics](permissions.md#interpret-the-apps-result) for the meanings of unverified, denied and failed checks. This procedure changes only ContextLens's permission entry; keep macOS security protections enabled.
+If access still fails, confirm the running app's path. Recent builds show **Running copy**, **Copy and signing details**, and **Show This Copy in Finder** beside the error. Note the app version/build, macOS version and exact error for a [bug report](https://github.com/bstack-tools/ContextLens/issues), keeping private logs and screen content local. See [permission diagnostics](permissions.md#interpret-the-apps-result) for the meanings of unverified, denied and failed checks. This procedure changes only ContextLens's permission entry; keep macOS security protections enabled.
 
 ### Other capture issues
 

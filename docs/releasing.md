@@ -22,7 +22,7 @@ Configure these seven GitHub Actions repository secrets using GitHub's encrypted
 | `ASC_KEY_ID` | App Store Connect API key ID |
 | `ASC_ISSUER_ID` | App Store Connect team issuer UUID |
 
-For example, `base64 < /secure/location/developer-id.p12 | gh secret set DEVELOPER_ID_P12_BASE64 --repo Brendan-Lim/ContextLens` reads the certificate without printing it. Use an interactive secret prompt for passwords. Configure real credentials only; there is no dummy/ad-hoc production mode.
+For example, `base64 < /secure/location/developer-id.p12 | gh secret set DEVELOPER_ID_P12_BASE64 --repo bstack-tools/ContextLens` reads the certificate without printing it. Use an interactive secret prompt for passwords. Configure real credentials only; there is no dummy/ad-hoc production mode.
 
 The workflow creates an isolated temporary keychain with a random masked password, imports only the intended signing identity, stores notarytool credentials there, removes temporary secret files, and restores the keychain search list/deletes the temporary keychain in an `always()` cleanup step. Scripts intentionally avoid shell tracing. No signing or private entitlement material is an artifact.
 
@@ -33,8 +33,8 @@ The workflow creates an isolated temporary keychain with a random masked passwor
 3. Dispatch the release workflow. For the current metadata the command will be:
 
    ```sh
-   gh workflow run release.yml --repo Brendan-Lim/ContextLens --ref main -f version=0.3.1
-   gh run list --repo Brendan-Lim/ContextLens --workflow release.yml
+   gh workflow run release.yml --repo bstack-tools/ContextLens --ref main -f version=0.3.1
+   gh run list --repo bstack-tools/ContextLens --workflow release.yml
    ```
 
    This command is prepared, **not yet exercised with real signing credentials**.
