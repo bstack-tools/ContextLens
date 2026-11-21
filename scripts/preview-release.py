@@ -175,12 +175,13 @@ def published_assets(info, version):
                 f'https://api.github.com/repos/{REPO}/releases/assets/{asset_id}', 'Unexpected preview API asset URL')
 
 
-def render_cask(version, checksum, asset_id):
+def render_cask(version, checksum):
+    # The cask downloads the release's browser URL (verified by published_assets),
+    # not the REST asset API, whose anonymous limit is 60 requests/hour per IP.
     preview_version(version)
     require(re.fullmatch(r'[0-9a-f]{64}', checksum), 'Actual SHA-256 required')
-    require(type(asset_id) is int and asset_id > 0, 'Actual positive GitHub asset ID required')
     return (ROOT / 'distribution/homebrew/Casks/contextlens-preview.rb.in').read_text().replace(
-        '__VERSION__', version).replace('__SHA256__', checksum).replace('__ASSET_ID__', str(asset_id))
+        '__VERSION__', version).replace('__SHA256__', checksum)
 
 
 def update_tap(tap, version):
@@ -199,8 +200,7 @@ def update_tap(tap, version):
         receipt = verify_archive(Path(temporary) / name, version)
         commit = json.loads(run('gh', 'api', f'repos/{REPO}/commits/v{version}'))
         require(receipt['sourceCommit'] == commit['sha'], 'Preview tag differs from archive source')
-        asset = next(a for a in info['assets'] if a['name'] == name)
-        contents = render_cask(version, receipt['sha256'], asset['id'])
+        contents = render_cask(version, receipt['sha256'])
     target = tap / 'Casks/contextlens-preview.rb'
     if target.exists():
         old = re.search(r'^  version "(.+)"$', target.read_text(), re.M)
