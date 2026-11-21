@@ -12,14 +12,14 @@ Capture the window you’re building, mark what should change, and hand the resu
 
 <br>
 
-[**Download for macOS**](https://github.com/Brendan-Lim/ContextLens/releases/tag/v0.3.0-preview.1) &nbsp;·&nbsp; [**Install with Homebrew**](#install) &nbsp;·&nbsp; [**Get started**](#get-started)
+[**Download for macOS**](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1) &nbsp;·&nbsp; [**Install with Homebrew**](#install) &nbsp;·&nbsp; [**Get started**](#get-started)
 
 <p>
   <a href="Package.swift"><img src="https://img.shields.io/badge/Swift-native-F05138?style=flat&amp;logo=swift&amp;logoColor=white" alt="Native Swift app"></a>
   <a href="docs/building.md"><img src="https://img.shields.io/badge/macOS-14%2B-555555?style=flat&amp;logo=apple&amp;logoColor=white" alt="Minimum deployment target: macOS 14 or later"></a>
   <a href="docs/building.md"><img src="https://img.shields.io/badge/Apple_Silicon-arm64-55677D?style=flat&amp;logo=apple&amp;logoColor=white" alt="Apple Silicon arm64"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/Brendan-Lim/ContextLens?style=flat&amp;color=2ea44f" alt="MIT license"></a>
-  <a href=".github/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Brendan-Lim/ContextLens/ci.yml?branch=main&amp;event=push&amp;style=flat&amp;label=CI&amp;logo=githubactions&amp;logoColor=white" alt="GitHub Actions CI status on main"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/bstack-tools/ContextLens?style=flat&amp;color=2ea44f" alt="MIT license"></a>
+  <a href=".github/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/bstack-tools/ContextLens/ci.yml?branch=main&amp;event=push&amp;style=flat&amp;label=CI&amp;logo=githubactions&amp;logoColor=white" alt="GitHub Actions CI status on main"></a>
 </p>
 
 <sub>Free and open source &nbsp;·&nbsp; Apple Silicon &nbsp;·&nbsp; macOS 14 Sonoma or later</sub>
@@ -76,7 +76,7 @@ You spot it straight away: the button that’s a few pixels off, the avatar that
 
 <br>
 
-## Why developers use ContextLens
+## Why use ContextLens
 
 <table>
 <tr>
@@ -153,18 +153,9 @@ ContextLens prepares the context. Your agent makes the change in your codebase, 
 
 ### Download
 
-**[Download ContextLens for macOS](https://github.com/Brendan-Lim/ContextLens/releases/tag/v0.3.0-preview.1)**. Unzip it, move **ContextLens** into your Applications folder, and open it from there.
+**[Download ContextLens for macOS](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1)**. Unzip it, move **ContextLens** into your Applications folder, and open it from there.
 
-ContextLens is in public preview. The first stable release, v0.3.1, will add a drag-to-install disk image.
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/media/screens/E-dmg-dark.png">
-    <img src="docs/media/screens/E-dmg-light.png" width="720" alt="The ContextLens Mac installer: drag ContextLens into Applications.">
-  </picture>
-  <br>
-  <sub>Drag ContextLens into Applications. · v0.3.1</sub>
-</p>
+ContextLens is in public preview.
 
 ### Homebrew
 
@@ -180,7 +171,7 @@ ContextLens is free and open source, and it isn’t notarized by Apple yet, so m
 2. Open **System Settings → Privacy & Security**, scroll down, click **Open Anyway**, and confirm.
 3. When prompted, allow **Screen Recording** for ContextLens, then reopen the app.
 
-Only do this for a copy downloaded from this repository’s [Releases](https://github.com/Brendan-Lim/ContextLens/releases) page; each release lists its SHA-256 checksum. Apple explains the steps in [Safely open apps on your Mac](https://support.apple.com/en-us/102445). You can optionally allow **Accessibility**, which lets ContextLens name the controls you click in a capture. It never reads what you type. More help: [Permissions](docs/permissions.md) · [Troubleshooting](docs/troubleshooting.md)
+Only do this for a copy from this repository’s [Releases](https://github.com/bstack-tools/ContextLens/releases) page, which lists each release’s SHA-256 checksum. Optionally allow **Accessibility** so ContextLens can name the controls you click; it never reads what you type. If capture is still denied, see the [Screen Recording recovery guide](docs/troubleshooting.md#screen-recording-enabled-but-capture-still-fails). More help: [Permissions](docs/permissions.md) · [Troubleshooting](docs/troubleshooting.md)
 
 <br>
 
@@ -197,16 +188,13 @@ Screenshots show whatever was on screen, so look over a hand-off before sharing 
 
 ## Get started
 
-On first launch, choose **Check Access**, follow macOS's Screen Recording permission prompts, and relaunch if macOS asks.
-
-> **Screen Recording enabled but capture still denied:** follow the [step-by-step Screen Recording recovery guide](docs/troubleshooting.md#screen-recording-enabled-but-capture-still-fails).
-
-1. Open the app you’re working on, such as a local dev server in your browser.
-2. In ContextLens, press <kbd>⌘</kbd><kbd>N</kbd>, choose that window under **Which window?**, and click **Start Capture**.
-3. Use your app as usual: open the menu, reproduce the bug, walk through the flow. Click **Stop Capture** when you’re done.
-4. In **Review**, untick the states you don’t need and click the one that shows the problem.
-5. In **Mark Up**, drag over the problem and write what should change. Add as many marks as you like.
-6. In **Hand Off**, click **Save Hand Off**, then **Copy prompt**, and paste it into your coding agent.
+1. On first launch, choose **Check Access** and follow macOS's Screen Recording prompts.
+2. Open the app you’re working on, such as a local dev server in your browser.
+3. In ContextLens, press <kbd>⌘</kbd><kbd>N</kbd>, choose that window under **Which window?**, and click **Start Capture**.
+4. Use your app as usual: open the menu, reproduce the bug, walk through the flow. Click **Stop Capture** when you’re done.
+5. In **Review**, untick the states you don’t need and click the one that shows the problem.
+6. In **Mark Up**, drag over the problem and write what should change. Add as many marks as you like.
+7. In **Hand Off**, click **Save Hand Off**, then **Copy prompt**, and paste it into your coding agent.
 
 Tip: **High** sensitivity (the default) catches small interface changes. **Low** ignores minor ones and keeps fewer states.
 
@@ -217,7 +205,7 @@ Tip: **High** sensitivity (the default) catches small interface changes. **Low**
 ContextLens is **[MIT licensed](LICENSE)**, including its branding. It’s written in Swift with zero third-party runtime dependencies, and comes with a command-line tool that uses the same export logic as the app.
 
 ```sh
-git clone https://github.com/Brendan-Lim/ContextLens.git
+git clone https://github.com/bstack-tools/ContextLens.git
 cd ContextLens
 scripts/build-app.sh      # builds dist/ContextLens.app and dist/contextlens-cli
 scripts/verify.sh         # runs the test suite
@@ -225,7 +213,7 @@ scripts/verify.sh         # runs the test suite
 
 [Building](docs/building.md) · [Testing](docs/native-testing.md) · [Research](docs/research.md) · [Architecture](docs/architecture.md) · [Export format](docs/export-format.md) · [Using with Claude Code](Integrations/claude-code.md) · [Releases and testing](docs/official-release-preparation.md)
 
-Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first, and [open an issue](https://github.com/Brendan-Lim/ContextLens/issues) for bugs you can reproduce.
+Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first, and [open an issue](https://github.com/bstack-tools/ContextLens/issues) for bugs you can reproduce.
 
 <br>
 
@@ -233,4 +221,6 @@ Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first, and [o
 <img src="Brand/mascot-peek.svg" width="72" alt="">
 <br>
 <sub>Stop explaining your UI. Just show it.</sub>
+<br>
+<sub>Built by <a href="https://github.com/Brendan-Lim">Brendan Lim</a> · part of <a href="https://github.com/bstack-tools">bstack</a></sub>
 </div>

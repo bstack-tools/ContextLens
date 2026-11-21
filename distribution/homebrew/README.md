@@ -2,7 +2,7 @@
 
 ## Unnotarized preview channel
 
-The separate `contextlens-preview` channel installs [ContextLens 0.3.0-preview.1](https://github.com/Brendan-Lim/ContextLens/releases/tag/v0.3.0-preview.1). The cask uses the verified published archive and actual SHA-256. [Candidate verification 42471268060](https://github.com/Brendan-Lim/homebrew-tap/actions/runs/42471268060) passed on a disposable arm64 macOS 15.8.2 runner with Homebrew 7.0.12: style, online audit, fetch/checksum, installation, app placement, CLI linking/help, quarantine retention, existing-app protection and uninstall preservation of session/export markers.
+The separate `contextlens-preview` channel installs [ContextLens 0.3.0-preview.1](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1). The cask uses the verified published archive and actual SHA-256. [Candidate verification 42471268060](https://github.com/Brendan-Lim/homebrew-tap/actions/runs/42471268060) passed on a disposable arm64 macOS 15.8.2 runner with Homebrew 7.0.12: style, online audit, fetch/checksum, installation, app placement, CLI linking/help, quarantine retention, existing-app protection and uninstall preservation of session/export markers.
 
 ```sh
 brew install --cask Brendan-Lim/tap/contextlens-preview
@@ -16,7 +16,7 @@ Previews are optimized arm64 builds for macOS 14+, ad-hoc signed without Develop
 
 The cask installs `ContextLens.app` and links its embedded `contextlens-cli`. It conflicts with the future stable cask and default Homebrew installation refuses to overwrite an existing app. Quit and deliberately back up an existing copy before switching channels; do not use force/adopt options. Both channels share the bundle ID, sessions and CLI name, so do not treat another app directory as isolation.
 
-Preview uninstall preserves sessions, settings and exported packages: there is no `zap` or deletion hook. Hosted checks use only a disposable GitHub macOS runner; manual Gatekeeper authorization, fresh-user Screen Recording and interactive capture/Hand Off remain pending. [Full preview instructions and report](https://github.com/Brendan-Lim/ContextLens/blob/main/docs/preview-releases.md).
+Preview uninstall preserves sessions, settings and exported packages: there is no `zap` or deletion hook. Hosted checks use only a disposable GitHub macOS runner; manual Gatekeeper authorization, fresh-user Screen Recording and interactive capture/Hand Off remain pending. [Full preview instructions and report](https://github.com/bstack-tools/ContextLens/blob/main/docs/preview-releases.md).
 
 Maintainers: `python3 scripts/validate.py` checks both channel templates and generated casks. Generate a preview cask with the main repository's `python3 scripts/preview-release.py update-tap VERSION /path/to/tap`. Push candidates under `preview/**` to run style, online audit, fetch and disposable install/uninstall checks before promoting to main. `scripts/test-preview-install.py` refuses to run outside a GitHub-hosted runner and does not authorize or launch the GUI app.
 
@@ -24,7 +24,7 @@ Maintainers: `python3 scripts/validate.py` checks both channel templates and gen
 
 Stable ContextLens distribution is pending Developer ID signing and Apple notarization. This channel contains a cask template and validation tooling. **There is no installable stable `contextlens` cask yet.**
 
-Source: [Brendan-Lim/ContextLens](https://github.com/Brendan-Lim/ContextLens). The native app captures and annotates a selected macOS window and exports local visual context for coding agents.
+Source: [bstack-tools/ContextLens](https://github.com/bstack-tools/ContextLens). The native app captures and annotates a selected macOS window and exports local visual context for coding agents.
 
 Validate the pending template with `python3 scripts/validate.py`. It uses Ruby's parser without inventing a checksum or download. The workflow audits a real cask only after a verified release exists.
 

@@ -1,0 +1,4 @@
+# Language stats: count the Swift app, not its release tooling, benchmarks or experiments.
+scripts/** linguist-detectable=false
+Benchmarks/** linguist-detectable=false
+Experiments/** linguist-detectable=false

@@ -2,7 +2,7 @@
 
 ContextLens 0.3.0 has a separate preview channel for Apple Silicon Macs running macOS 14+. It needs no paid Apple Developer membership or Apple credentials. Builds use optimized arm64 Swift products and ad-hoc signatures for code integrity. They have **no Developer ID signature, Apple notarization or promised Gatekeeper acceptance**. These prereleases are never marked latest/stable. macOS 14 is the deployment target; hosted runtime checks use macOS 15.
 
-Published: [v0.3.0-preview.1 — Unnotarized Preview](https://github.com/Brendan-Lim/ContextLens/releases/tag/v0.3.0-preview.1), after [all preview workflow checks passed](https://github.com/Brendan-Lim/ContextLens/actions/runs/42469995205). The public ZIP was downloaded independently and verified. The separate cask is published in the [tap](https://github.com/Brendan-Lim/homebrew-tap) after [all candidate checks passed](https://github.com/Brendan-Lim/homebrew-tap/actions/runs/42471268060), including online audit, download, installation and uninstallation. The interactive installed-preview workflow remains pending. The stable `contextlens` template and signed `release.yml` remain separate. [Official candidate and release gates](official-release-preparation.md).
+Published: [v0.3.0-preview.1 — Unnotarized Preview](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1), after [all preview workflow checks passed](https://github.com/bstack-tools/ContextLens/actions/runs/42469995205). The public ZIP was downloaded independently and verified. The separate cask is published in the [tap](https://github.com/Brendan-Lim/homebrew-tap) after [all candidate checks passed](https://github.com/Brendan-Lim/homebrew-tap/actions/runs/42471268060), including online audit, download, installation and uninstallation. The interactive installed-preview workflow remains pending. The stable `contextlens` template and signed `release.yml` remain separate. [Official candidate and release gates](official-release-preparation.md).
 
 ```sh
 brew install --cask Brendan-Lim/tap/contextlens-preview
@@ -25,7 +25,7 @@ Compare the output with the full checksum above before extracting and authorizin
 
 ## For a first-time user
 
-1. Review the source and the release at the official [ContextLens repository](https://github.com/Brendan-Lim/ContextLens). Use only an explicitly labeled **Unnotarized Preview**. Confirm its version, source commit and published checksum. Ad-hoc signing does not authenticate the developer; neither a checksum nor passing tests makes it Apple-verified.
+1. Review the source and the release at the official [ContextLens repository](https://github.com/bstack-tools/ContextLens). Use only an explicitly labeled **Unnotarized Preview**. Confirm its version, source commit and published checksum. Ad-hoc signing does not authenticate the developer; neither a checksum nor passing tests makes it Apple-verified.
 2. Download the versioned ZIP and its `.zip.sha256` from that release. In the download directory run `shasum -a 256 -c ContextLens-0.3.0-preview.1-arm64.zip.sha256`. The checksum should report `OK`. Stop if it differs. A checksum obtained from the same release protects against mismatched downloads, not compromise of the release account.
 3. For a direct download, extract the ZIP and drag `ContextLens.app` into Applications. If you already have a copy, quit it and deliberately back it up before switching. Do not overwrite your working app just to try the preview. The channels share a bundle ID, session location and CLI name; they are not isolated side-by-side installations.
 4. Try opening ContextLens. If macOS blocks it because the developer cannot be verified or Apple cannot check it, dismiss the alert. Only if you trust the origin and intact download, open **System Settings → Privacy & Security**, scroll to the blocked-app notice, choose **Open Anyway**, and confirm **Open**. Follow [Apple's instructions](https://support.apple.com/en-us/102445). This is your decision for this app; do not disable Gatekeeper or remove quarantine. If macOS reports malware, corruption or a revoked app, stop and investigate. Managed Mac policies may prevent authorization.
@@ -48,8 +48,8 @@ Uninstallation and preserved synthetic sessions/exports were verified. Upgrades 
 The published cask above remains 0.3.0-preview.1. Source now targets **0.3.1/build 6**; [capture reliability](native-capture-reliability.md) separates candidate tests from the older binary. From clean, current `main`, choose an unused preview matching `config/version.json`; the next candidate is:
 
 ```sh
-gh workflow run preview-release.yml --repo Brendan-Lim/ContextLens --ref main -f version=0.3.1-preview.1
-gh run list --repo Brendan-Lim/ContextLens --workflow preview-release.yml
+gh workflow run preview-release.yml --repo bstack-tools/ContextLens --ref main -f version=0.3.1-preview.1
+gh run list --repo bstack-tools/ContextLens --workflow preview-release.yml
 ```
 
 The manually dispatched job runs all deterministic CI checks: Swift/Python regressions, schemas/packages, replays, real-bundle portability rejection, development packaging and owned browser fixtures. It builds again using `scripts/build-app.sh --preview VERSION --output DIRECTORY`, which forces ad-hoc signing even if an Apple identity/environment variable exists. No Apple secrets, keychain import, notarytool, stapler, Gatekeeper exception or quarantine manipulation is involved in the preview workflow.
