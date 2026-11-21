@@ -160,7 +160,7 @@ def preflight(version):
     tag = 'v' + version
     refs = run('git', '-C', ROOT, 'tag', '--list', tag).strip()
     require(not refs, 'Version tag already exists; choose a new version')
-    releases = json.loads(run('gh', 'api', 'repos/Brendan-Lim/ContextLens/releases', '--paginate', '--slurp'))
+    releases = json.loads(run('gh', 'api', 'repos/bstack-tools/ContextLens/releases', '--paginate', '--slurp'))
     require(not any(r['tag_name'] == tag for page in releases for r in page), 'Release already exists')
     print('Release source preflight passed: ' + tag)
 

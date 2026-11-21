@@ -89,7 +89,7 @@ jobs:
           python3 -c 'import os,re; assert re.fullmatch(r"[1-9][0-9]*", os.environ["CANDIDATE_RUN_ID"])'
       - run: python3 -m pip install --require-hashes -r distribution/dmg/requirements.txt
       - name: Download existing candidate without rebuilding it
-        run: gh run download "$CANDIDATE_RUN_ID" --repo Brendan-Lim/ContextLens --name "official-candidate-$RELEASE_VERSION" --dir "$RUNNER_TEMP/official-assets"
+        run: gh run download "$CANDIDATE_RUN_ID" --repo bstack-tools/ContextLens --name "official-candidate-$RELEASE_VERSION" --dir "$RUNNER_TEMP/official-assets"
       - name: Audit reviewed source and verify acceptance before promotion
         run: |
           python3 scripts/audit-public-files.py

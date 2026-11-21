@@ -17,7 +17,7 @@ During verification GitHub's browser asset URL returned HTTP 504, while the offi
 ```sh
 curl --fail --location --header 'Accept: application/octet-stream' \
   --output ContextLens-0.3.0-preview.1-arm64.zip \
-  https://api.github.com/repos/Brendan-Lim/ContextLens/releases/assets/723563642
+  https://api.github.com/repos/bstack-tools/ContextLens/releases/assets/723563642
 shasum -a 256 ContextLens-0.3.0-preview.1-arm64.zip
 ```
 

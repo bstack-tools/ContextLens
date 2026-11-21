@@ -45,7 +45,7 @@ def main():
     require(subprocess.check_output(['git', '-C', str(tap), 'remote', 'get-url', 'origin'], text=True).strip() in ['https://github.com/Brendan-Lim/homebrew-tap.git', 'https://github.com/Brendan-Lim/homebrew-tap', 'git@github.com:Brendan-Lim/homebrew-tap.git'], 'Unexpected tap remote')
     require(not subprocess.check_output(['git', '-C', str(tap), 'status', '--porcelain'], text=True).strip(), 'Tap must be clean before updating')
     tag = 'v' + args.version
-    info = json.loads(subprocess.check_output(['gh', 'api', f'repos/Brendan-Lim/ContextLens/releases/tags/{tag}'], text=True))
+    info = json.loads(subprocess.check_output(['gh', 'api', f'repos/bstack-tools/ContextLens/releases/tags/{tag}'], text=True))
     require(info['tag_name'] == tag and not info['draft'] and not info['prerelease'] and info['published_at'], 'A published stable release is required')
     name = f'ContextLens-{args.version}-arm64.zip'
     official = official_helpers() if args.unnotarized_official else None
@@ -53,14 +53,14 @@ def main():
     for asset in assets:
         matching = [a for a in info['assets'] if a['name'] == asset]
         require(len(matching) == 1 and matching[0]['state'] == 'uploaded', 'Missing or ambiguous release asset')
-        require(matching[0]['browser_download_url'] == f'https://github.com/Brendan-Lim/ContextLens/releases/download/{tag}/{asset}', 'Unexpected release download URL')
+        require(matching[0]['browser_download_url'] == f'https://github.com/bstack-tools/ContextLens/releases/download/{tag}/{asset}', 'Unexpected release download URL')
     with tempfile.TemporaryDirectory(prefix='contextlens-tap-update-') as temporary:
         patterns = [item for asset in assets for item in ['--pattern', asset]]
-        subprocess.run(['gh', 'release', 'download', tag, '--repo', 'Brendan-Lim/ContextLens', '--dir', temporary, *patterns], check=True)
+        subprocess.run(['gh', 'release', 'download', tag, '--repo', 'bstack-tools/ContextLens', '--dir', temporary, *patterns], check=True)
         receipt = official.verify_assets(temporary) if official else verify_archive(Path(temporary) / name)
         if official:
             official.acceptance(json.loads((Path(temporary) / 'acceptance.json').read_text()), receipt)
-        commit = json.loads(subprocess.check_output(['gh', 'api', f'repos/Brendan-Lim/ContextLens/commits/{tag}'], text=True))
+        commit = json.loads(subprocess.check_output(['gh', 'api', f'repos/bstack-tools/ContextLens/commits/{tag}'], text=True))
         require(receipt.get('sourceCommit') == commit['sha'], 'Receipt source commit differs from the published tag')
         # Trust the expected signing team, not a receipt's self-asserted trust field.
         asset_id = next(a['id'] for a in info['assets'] if a['name'] == name)

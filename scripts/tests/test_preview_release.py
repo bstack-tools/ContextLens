@@ -86,7 +86,7 @@ class PreviewSafetyTests(unittest.TestCase):
         text = preview.render_cask(VERSION, 'a' * 64, 123)
         self.assertIn('cask "contextlens-preview"', text)
         self.assertIn(f'version "{VERSION},123"', text)
-        self.assertIn('https://api.github.com/repos/Brendan-Lim/ContextLens/releases/assets/#{version.csv.second}', text)
+        self.assertIn('https://api.github.com/repos/bstack-tools/ContextLens/releases/assets/#{version.csv.second}', text)
         self.assertIn('Accept: application/octet-stream', text)
         self.assertIn('conflicts_with cask: "contextlens"', text)
         self.assertIn('Unnotarized', text)
@@ -98,9 +98,9 @@ class PreviewSafetyTests(unittest.TestCase):
         version = VERSION
         name = f'ContextLens-{version}-arm64.zip'
         info = dict(tag_name='v' + version, draft=False, prerelease=True, published_at='now',
-                    assets=[dict(id=i, url=f'https://api.github.com/repos/Brendan-Lim/ContextLens/releases/assets/{i}',
+                    assets=[dict(id=i, url=f'https://api.github.com/repos/bstack-tools/ContextLens/releases/assets/{i}',
                                  name=n, state='uploaded', browser_download_url=
-                                 f'https://github.com/Brendan-Lim/ContextLens/releases/download/v{version}/{n}')
+                                 f'https://github.com/bstack-tools/ContextLens/releases/download/v{version}/{n}')
                             for i, n in enumerate([name, name + '.sha256', name + '.json'], 123)])
         preview.published_assets(info, version)
         for change in [dict(draft=True), dict(prerelease=False), dict(assets=[]), dict(tag_name='v' + BASE)]:
