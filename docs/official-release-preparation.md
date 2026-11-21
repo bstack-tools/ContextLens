@@ -1,6 +1,6 @@
 # Official unnotarized release preparation
 
-The published download is [v0.3.0-preview.1](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1). v0.3.1/build 6 is an **unpublished candidate**, with ad-hoc signatures, no Developer ID and no Apple notarization. No installable stable Homebrew cask exists. The separate [Developer ID workflow](releasing.md) keeps its signing, notarization and Gatekeeper requirements.
+The published download is the preview [v0.3.1-preview.2](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.1-preview.2), built from 0.3.1/build 6 source. A stable v0.3.1 is **not yet published**; candidates and previews have ad-hoc signatures, no Developer ID and no Apple notarization. No installable stable Homebrew cask exists. The separate [Developer ID workflow](releasing.md) keeps its signing, notarization and Gatekeeper requirements.
 
 ## Candidate baseline
 
