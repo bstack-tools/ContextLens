@@ -2,7 +2,7 @@
 
 ## Binary downloads and Homebrew
 
-The current download is the preview [`v0.3.0-preview.1`](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1) (ZIP), also installable with `brew install --cask Brendan-Lim/tap/contextlens-preview`. Both are ad-hoc signed and not notarized by Apple. The stable DMG and the `contextlens` cask appear only after v0.3.1 passes [interactive acceptance](release-acceptance/README.md) and is published; until then, any stable cask template is not an installable package. [Homebrew channels](homebrew.md).
+The current download is the preview [`v0.3.1-preview.2`](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.1-preview.2) (ZIP), also installable with `brew install --cask Brendan-Lim/tap/contextlens-preview`. Both are ad-hoc signed and not notarized by Apple. The stable DMG and the `contextlens` cask appear only after v0.3.1 passes [interactive acceptance](release-acceptance/README.md) and is published; until then, any stable cask template is not an installable package. [Homebrew channels](homebrew.md).
 
 ContextLens is built for macOS 14 Sonoma and later on Apple Silicon. Automated checks run on macOS 15 and macOS 26; macOS 14 itself has not been tested at runtime yet, so please [report](https://github.com/bstack-tools/ContextLens/issues) anything that breaks there.
 

@@ -12,7 +12,7 @@ Capture the window you’re building, mark what should change, and hand the resu
 
 <br>
 
-[**Download for macOS**](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1) &nbsp;·&nbsp; [**Install with Homebrew**](#install) &nbsp;·&nbsp; [**Get started**](#get-started)
+[**Download for macOS**](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.1-preview.2) &nbsp;·&nbsp; [**Install with Homebrew**](#install) &nbsp;·&nbsp; [**Get started**](#get-started)
 
 <p>
   <a href="Package.swift"><img src="https://img.shields.io/badge/Swift-native-F05138?style=flat&amp;logo=swift&amp;logoColor=white" alt="Native Swift app"></a>
@@ -153,7 +153,7 @@ ContextLens prepares the context. Your agent makes the change in your codebase, 
 
 ### Download
 
-**[Download ContextLens for macOS](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.0-preview.1)**. Unzip it, move **ContextLens** into your Applications folder, and open it from there.
+**[Download ContextLens for macOS](https://github.com/bstack-tools/ContextLens/releases/tag/v0.3.1-preview.2)**. Unzip it, move **ContextLens** into your Applications folder, and open it from there.
 
 ContextLens is in public preview.
 
@@ -163,9 +163,20 @@ ContextLens is in public preview.
 brew install --cask Brendan-Lim/tap/contextlens-preview
 ```
 
+### Build from source
+
+If you have Xcode, you can build ContextLens yourself. macOS doesn’t show the first-launch prompt below for an app you built on your own Mac.
+
+```sh
+git clone https://github.com/bstack-tools/ContextLens.git && cd ContextLens
+scripts/build-app.sh && open dist/ContextLens.app
+```
+
+More detail: [Building](docs/building.md)
+
 ### First launch
 
-ContextLens is free and open source, and it isn’t notarized by Apple yet, so macOS asks you to confirm the first time you open it:
+ContextLens is free and open source, but it isn’t notarized by Apple yet. Notarization needs a paid Apple Developer membership (US$99 a year), and this is a student project. The signing and notarization pipeline is ready for when it is. Until then, macOS asks you to confirm the first time you open a downloaded copy:
 
 1. Open ContextLens from Applications. If macOS says it can’t verify the app, close the message.
 2. Open **System Settings → Privacy & Security**, scroll down, click **Open Anyway**, and confirm.
