@@ -14,7 +14,7 @@ Verified on a disposable arm64 macOS 15.8.2 runner with Homebrew 7.0.12. After i
 
 Public archive SHA-256: `42373a29db99f592583d5dcaff1574ae6d75b34481b1fb8a3fa44e1217ea2a2d`.
 
-During verification GitHub's browser asset URL returned HTTP 504, while the official public asset API served the identical ZIP without credentials. The preview cask uses that immutable asset ID with `Accept: application/octet-stream` and the same SHA-256. Its Homebrew version combines preview version and asset ID as `0.3.1-preview.2,776028347`. No account, token or compiler is required. If the release page download fails, this credential-free download was tested:
+The cask downloads the release's normal browser URL with the same SHA-256. No account, token or compiler is required. Earlier casks used the REST asset API (`api.github.com/…/releases/assets/ID`) because the browser URL returned HTTP 504 once during the 0.3.0 verification. That API allows only 60 anonymous requests per hour per IP address, so installs failed with HTTP 403 on shared runners and could fail on shared networks; the browser URL has no such limit. Because the cask now names the prerelease tag directly, the tap lists `contextlens-preview` in `audit_exceptions/github_prerelease_allowlist.json` so `brew audit --online` accepts a preview-only cask. If the release page download fails, the same file is also available without credentials from the asset API:
 
 ```sh
 curl --fail --location --header 'Accept: application/octet-stream' \
@@ -67,7 +67,7 @@ gh repo clone Brendan-Lim/homebrew-tap /tmp/contextlens-preview-tap
 python3 scripts/preview-release.py update-tap 0.3.1-preview.3 /tmp/contextlens-preview-tap
 ```
 
-This checks official browser/API URLs and asset IDs, uploaded assets, downloaded checksum, preview trust label, signatures, portable arm64 bundle, receipt and matching source tag before rendering `Casks/contextlens-preview.rb`. It cannot generate a cask for a draft or stable release or a fabricated checksum. It never changes `Casks/contextlens.rb` or its template. Run tap validation, `brew style`, online audit, download verification and the disposable hosted installation check on a candidate branch before publishing the tap's main branch. Then update the status here with evidence. No cross-repository secret is needed; use existing maintainer authorization.
+This checks official browser/API URLs, uploaded assets, downloaded checksum, preview trust label, signatures, portable arm64 bundle, receipt and matching source tag before rendering `Casks/contextlens-preview.rb`. It cannot generate a cask for a draft or stable release or a fabricated checksum. It never changes `Casks/contextlens.rb` or its template. Run tap validation, `brew style`, online audit, download verification and the disposable hosted installation check on a candidate branch before publishing the tap's main branch. Then update the status here with evidence. No cross-repository secret is needed; use existing maintainer authorization.
 
 ## Installation verification
 

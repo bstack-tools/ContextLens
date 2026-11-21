@@ -79,15 +79,17 @@ class PreviewSafetyTests(unittest.TestCase):
                 execute.assert_not_called()
 
     def test_cask_requires_actual_sha_and_discloses_trust(self):
-        with self.assertRaises(ValueError): preview.render_cask(VERSION, 'fake', 123)
-        for asset_id in [0, -1, True, '123/../456', '123;echo x']:
-            with self.subTest(asset_id=asset_id), self.assertRaises(ValueError):
-                preview.render_cask(VERSION, 'a' * 64, asset_id)
-        text = preview.render_cask(VERSION, 'a' * 64, 123)
+        with self.assertRaises(ValueError): preview.render_cask(VERSION, 'fake')
+        for version in ['0.3.1', '0.3.1-preview.0', '0.3.1-preview.1;echo x']:
+            with self.subTest(version=version), self.assertRaises(ValueError):
+                preview.render_cask(version, 'a' * 64)
+        text = preview.render_cask(VERSION, 'a' * 64)
         self.assertIn('cask "contextlens-preview"', text)
-        self.assertIn(f'version "{VERSION},123"', text)
-        self.assertIn('https://api.github.com/repos/bstack-tools/ContextLens/releases/assets/#{version.csv.second}', text)
-        self.assertIn('Accept: application/octet-stream', text)
+        self.assertIn(f'version "{VERSION}"', text)
+        # Browser download URL, not the rate-limited anonymous REST asset API.
+        self.assertIn('url "https://github.com/bstack-tools/ContextLens/releases/download/v#{version}/ContextLens-#{version}-arm64.zip"', text)
+        self.assertNotIn('api.github.com', text)
+        self.assertNotIn('__', text)
         self.assertIn('conflicts_with cask: "contextlens"', text)
         self.assertIn('Unnotarized', text)
         self.assertIn('Open Anyway', text)
